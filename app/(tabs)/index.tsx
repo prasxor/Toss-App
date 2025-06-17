@@ -35,8 +35,8 @@ function Coin3D({ result, theme, animate, spinAnim }: { result: string, theme: '
           <View style={[styles.coinOuter, { borderColor }]} pointerEvents="none" />
         </Animated.View>
         {/* Static middle and inner coin */}
-        <View style={[styles.coinMiddle, { borderColor }]}> 
-          <View style={[styles.coinInner, { backgroundColor: bgColor, borderColor: borderColor }]}> 
+        <View style={[styles.coinMiddle, { borderColor }]}>
+          <View style={[styles.coinInner, { backgroundColor: bgColor, borderColor: borderColor }]}>
             <Text style={[styles.coinText, theme === 'dark' && { color: '#fff' }]}>{result || 'HEADS'}</Text>
           </View>
         </View>
@@ -52,7 +52,8 @@ export default function HomeScreen() {
   const [showResult, setShowResult] = useState(false);
   const sliderY = useRef(new Animated.Value(SLIDER_BOTTOM)).current;
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const resultAnim = useRef(new Animated.Value(0)).current;
+  const resultAnim = useRef(new Animated.Value(1)).current;
+
   const spinAnim = useRef(new Animated.Value(0)).current;
 
   // PanResponder for smooth drag and spring-back
@@ -88,7 +89,7 @@ export default function HomeScreen() {
             setSpinning(false);
             setShowResult(true);
             // Animate in result (OneUI flex effect)
-            resultAnim.setValue(0);
+            resultAnim.setValue(1); // Keep coin visible immediately after reset
             Animated.timing(resultAnim, {
               toValue: 1,
               duration: 600,
@@ -118,7 +119,7 @@ export default function HomeScreen() {
     setShowResult(false);
     setResult('HEADS');
     sliderY.setValue(SLIDER_BOTTOM);
-    resultAnim.setValue(0);
+    resultAnim.setValue(1); // Keep coin visible immediately after reset
   };
 
   // Spin dashed border forever
@@ -135,7 +136,7 @@ export default function HomeScreen() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={[styles.container, theme === 'dark' && styles.darkBg]}>  
+      <View style={[styles.container, theme === 'dark' && styles.darkBg]}>
         {/* Top bar */}
         <View style={styles.topBar}>
           <Pressable style={[styles.themeBtn, theme === 'dark' && styles.themeBtnDark]} onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
@@ -147,7 +148,7 @@ export default function HomeScreen() {
         </View>
         {/* Coin */}
         <View style={styles.coinContainer}>
-          <Coin3D result={result} theme={theme} animate={showResult ? resultAnim : new Animated.Value(1)} spinAnim={spinAnim} />
+          <Coin3D result={result} theme={theme} animate={resultAnim} spinAnim={spinAnim} />
           {showResult && (
             <Animated.View style={{
               opacity: resultAnim,
@@ -321,3 +322,4 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
 });
+
