@@ -6,10 +6,13 @@ import { Audio } from 'expo-av';
 // import sound from "../../assets/"
 
 const SLIDER_HEIGHT = 250;
-const SLIDER_WIDTH = 68;
+const SLIDER_WIDTH = 70;
 const SLIDER_BTN_SIZE = 65;
+const SLIDER_BTN_OFFSET = 6.5; // Amount of lift from bottom
 const SLIDER_TOP = 0;
-const SLIDER_BOTTOM = SLIDER_HEIGHT - SLIDER_BTN_SIZE;
+const SLIDER_BOTTOM = SLIDER_HEIGHT - SLIDER_BTN_SIZE - SLIDER_BTN_OFFSET;
+
+
 
 function Coin3D({ result, theme, animate, spinAnim }: { result: string, theme: 'light' | 'dark', animate: Animated.Value, spinAnim: Animated.Value }) {
   // Color for heads/tails
