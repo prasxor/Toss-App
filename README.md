@@ -1,50 +1,89 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Toss App
 
-## Get started
+A simple and interactive Toss App built using React Native with Expo CLI. The app features a smooth 2D coin toss animation triggered by a slider gesture, with theme toggling, sound effects, and customizable settings.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- Coin toss triggered by upward slide interaction
+- Sound effect on toss
+- Dark/Light theme switching
+- Separate settings screen for toggles
+- Retry button to re-toss
+- Built using Expo CLI and Metro Bundler
 
-2. Start the app
+## Getting Started
 
-   ```bash
-   npx expo start
-   ```
+### Prerequisites
 
-In the output, you'll find options to open the app in a
+- Node.js
+- npm or yarn
+- Expo CLI
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. Clone the repository:
 
 ```bash
-npm run reset-project
+git clone https://github.com/prasxor/toss-app.git
+```
+```
+cd toss-app
+````
+
+2. Install dependencies:
+
+```bash
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. Start the development server:
 
-## Learn more
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Structure
 
-## Join the community
+```plaintext
+.
+├── .vscode/              # Editor settings
+├── app/                  # App entry point and navigation structure
+├── assets/               # Images, fonts, sound files
+├── components/           # Reusable UI components
+├── constants/            # Theme colors, configuration values
+├── hooks/                # Custom React hooks
+├── scripts/              # Utility or setup scripts
+├── .gitignore
+├── README.md
+├── app.json              # Expo app configuration
+├── eas.json              # EAS build configuration
+├── eslint.config.js      # ESLint configuration
+├── package.json
+├── package-lock.json
+├── tsconfig.json         # TypeScript configuration
+```
 
-Join our community of developers creating universal apps.
+## Dependencies
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+* React Native
+* Expo
+* expo-av (for sound playback)
+* react-native-reanimated (for animations)
+* react-native-gesture-handler (for slider gesture)
+* react-navigation (for screen transitions)
+* expo-linear-gradient (for UI styling)
+
+
+
+```bash
+npm start         # Starts Metro bundler
+npm run android   # Opens app in Android emulator/device
+npm run ios       # Opens app in iOS simulator (macOS only)
+npm run web       # Opens app in web browser
+```
+
+## License
+
+This project is licensed under the MIT License.
